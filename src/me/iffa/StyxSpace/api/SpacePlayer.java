@@ -10,7 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * SpacePlayer for player related methods (for usage with other plugins that use the StyxSpace API)
+ * SpacePlayer for player related methods (for usage with other plugins that use
+ * the StyxSpace API)
  * 
  * @author iffa
  * 
@@ -71,7 +72,7 @@ public class SpacePlayer {
 	 *            any block id
 	 */
 	public void setSpaceHelmet(Player player, Integer blockid) {
-		SpacePlayerListener.helmetType.put(player, blockid);
+		SpaceConfig.SPACEHELMET = blockid;
 	}
 
 	/**
