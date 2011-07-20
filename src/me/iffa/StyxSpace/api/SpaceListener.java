@@ -1,6 +1,5 @@
 package me.iffa.styxspace.api;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -16,9 +15,7 @@ public class SpaceListener {
 	protected StyxSpace plugin;
 
 	public SpaceListener() {
-		plugin = (StyxSpace) Bukkit.getServer().getPluginManager()
-				.getPlugin("StyxSpace");
-		plugin.listeners.add(this);
+		StyxSpace.listeners.add(this);
 	}
 
 	/**
@@ -65,5 +62,14 @@ public class SpaceListener {
 	 *            Player that used a sign portal
 	 */
 	public void onPortalUse(Player player, Location destination) {
+	}
+
+	/**
+	 * Called when a player uses the space command
+	 * 
+	 * @param player
+	 *            Player that used the space command
+	 */
+	public void onSpaceCommand(Player player) {
 	}
 }
