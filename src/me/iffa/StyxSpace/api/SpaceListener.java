@@ -1,13 +1,13 @@
-package me.iffa.StyxSpace.api;
+package me.iffa.styxspace.api;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import me.iffa.StyxSpace.StyxSpace;
+import me.iffa.styxspace.StyxSpace;
 
 /**
- * Listener for events of StyxSpace Note: you can't cancel these. :)
+ * Listener for events of StyxSpace.
  * 
  * @author iffa
  * 
@@ -22,35 +22,48 @@ public class SpaceListener {
 	}
 
 	/**
-	 * Called when a player enters a breathable area
+	 * Called when a player enters a breathable area.
 	 * 
 	 * @param player
+	 *            Player that entered a breathable area
 	 */
 	public void onAreaEnter(Player player) {
 	}
 
 	/**
-	 * Called when a player leaves a breathable area
+	 * Called when a player leaves a breathable area.
 	 * 
 	 * @param player
+	 *            Player that left a breathable area
 	 */
 	public void onAreaLeave(Player player) {
 	}
 
 	/**
-	 * Called when a player teleports to space
+	 * Called when a player teleports to space.
 	 * 
 	 * @param player
+	 *            Player that teleported to space
 	 */
 	public void onTeleportToSpace(Player player, Location destination) {
 	}
 
 	/**
-	 * Called when the /space command is used
-	 * out of order for unknown amount of time
+	 * Called when a player starts suffocating (for having no helmet, suit or
+	 * both).
+	 * 
 	 * @param player
-	 * @param args
+	 *            Player that is suffocating
 	 */
-	//public void onSpaceCommand(Player player, String args[]) {
-	//}
+	public void onSpaceSuffocation(Player player) {
+	}
+
+	/**
+	 * Called when a player uses a sign portal.
+	 * 
+	 * @param player
+	 *            Player that used a sign portal
+	 */
+	public void onPortalUse(Player player, Location destination) {
+	}
 }
