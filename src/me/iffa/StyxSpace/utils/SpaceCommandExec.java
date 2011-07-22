@@ -89,7 +89,6 @@ public class SpaceCommandExec implements CommandExecutor {
 					permission = true;
 				}
 				if (permission)
-					// save location for enter teleport:
 					enterDest.put(player, player.getLocation());
 				Location location;
 				if (permission) {
@@ -128,6 +127,40 @@ public class SpaceCommandExec implements CommandExecutor {
 			}
 			sender.sendMessage(ChatColor.RED
 					+ "/space help - Brings up this help message");
+			return true;
+		} else if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+			if (spacePlayer.hasPermission("StyxSpace.admin.reload", player)) {
+				SpaceConfig.WORLD_NAME = (String) SpaceConfig.myConfig
+						.getProperty("styxspace.worldname");
+				SpaceConfig.ALWAYS_NIGHT = SpaceConfig.myConfig.getBoolean(
+						"styxspace.alwaysnight", true);
+				SpaceConfig.WEATHER = SpaceConfig.myConfig.getBoolean(
+						"styxspace.weather", false);
+				SpaceConfig.HOSTILE_MOBS = SpaceConfig.myConfig.getBoolean(
+						"styxspace.hostilemobs", false);
+				SpaceConfig.NEUTRAL_MOBS = SpaceConfig.myConfig.getBoolean(
+						"styxspace.neutralmobs", true);
+				SpaceConfig.GIVEHELMET = SpaceConfig.myConfig.getBoolean(
+						"styxspace.helmet.givehelmet", false);
+				SpaceConfig.SPACEHELMET = SpaceConfig.myConfig.getInt(
+						"styxspace.helmet.blockid", 86);
+				SpaceConfig.HELMET_REQUIRED = SpaceConfig.myConfig.getBoolean(
+						"styxspace.helmet.required", false);
+				SpaceConfig.GIVESUIT = SpaceConfig.myConfig.getBoolean(
+						"styxspace.suit.givesuit", false);
+				SpaceConfig.DEFAULT_ARMOR = SpaceConfig.myConfig.getString(
+						"styxspace.suit.armortype", "iron");
+				SpaceConfig.SUIT_REQUIRED = SpaceConfig.myConfig.getBoolean(
+						"styxspace.suit.required", false);
+				SpaceConfig.ROOM_HEIGHT = SpaceConfig.myConfig.getInt(
+						"styxspace.breathingarea.maxroomheight", 5);
+				SpaceConfig.FLYING = SpaceConfig.myConfig.getBoolean(
+						"styxspace.enablegravity", true);
+				player.sendMessage(ChatColor.GREEN + StyxSpace.prefix
+						+ " Reloaded configuration file!");
+				return true;
+			}
+
 			return true;
 		} else if (args.length == 1 && !args[0].equalsIgnoreCase("back")) {
 			if (spacePlayer.hasPermission("StyxSpace.teleport.enterothers",
