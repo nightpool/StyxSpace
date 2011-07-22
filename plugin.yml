@@ -1,0 +1,15 @@
+name: StyxSpace
+author: iffa, Canis85, BR
+main: me.iffa.styxspace.StyxSpace
+version: 1.0
+softdepend: [Permissions]
+commands:
+    space:
+        description: Go to space
+        usage: /<command>
+        aliases: []
+        permission: styxspace.use
+    spacev:
+        description: Go to space
+        usage: /<command>
+        aliases: []

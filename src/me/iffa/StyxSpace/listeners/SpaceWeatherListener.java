@@ -6,6 +6,12 @@ import me.iffa.styxspace.utils.SpaceConfig;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.event.weather.WeatherListener;
 
+/**
+ * WeatherListener
+ * 
+ * @author iffa
+ * 
+ */
 public class SpaceWeatherListener extends WeatherListener {
 	public static StyxSpace plugin;
 
@@ -14,6 +20,9 @@ public class SpaceWeatherListener extends WeatherListener {
 		plugin = instance;
 	}
 
+	/**
+	 * Called when the weather changes.
+	 */
 	public void onWeatherChange(WeatherChangeEvent event) {
 		if (event.getWorld() == StyxSpace.getSpace()) {
 			if (SpaceConfig.WEATHER == false) {

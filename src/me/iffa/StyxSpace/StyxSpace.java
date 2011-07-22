@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 // StyxSpace imports
 import me.iffa.styxspace.api.*;
 import me.iffa.styxspace.listeners.SpaceEntityListener;
-import me.iffa.styxspace.listeners.SpaceGravityListener;
 import me.iffa.styxspace.listeners.SpacePlayerListener;
 import me.iffa.styxspace.listeners.SpacePortalBListener;
 import me.iffa.styxspace.listeners.SpacePortalListener;
@@ -40,9 +39,11 @@ import com.nijikokun.bukkit.Permissions.Permissions;
  * 
  */
 public class StyxSpace extends JavaPlugin {
+	// Configuration file stuff
 	SpaceConfig cMgr = new SpaceConfig();
 	SpacePortalConfig cpMgr = new SpacePortalConfig();
 
+	// Variables
 	public static String prefix = "[StyxSpace]";
 	public static String version = "0.9 [Netherrack]";
 	public static Logger log = Logger.getLogger("Minecraft");
@@ -62,9 +63,6 @@ public class StyxSpace extends JavaPlugin {
 			this);
 	// PlayerListener (portals)
 	private final SpacePortalListener pplayerListener = new SpacePortalListener(
-			this);
-	// PlayerListener (gravity)
-	private final SpaceGravityListener ppplayerListener = new SpaceGravityListener(
 			this);
 	// BlockListener (portals)
 	private final SpacePortalBListener bListener = new SpacePortalBListener(
@@ -109,14 +107,6 @@ public class StyxSpace extends JavaPlugin {
 				Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, pplayerListener,
 				Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.PLAYER_MOVE, ppplayerListener,
-				Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.PLAYER_KICK, ppplayerListener,
-				Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.PLAYER_JOIN, ppplayerListener,
-				Event.Priority.Normal, this);
-		pm.registerEvent(Event.Type.PLAYER_TOGGLE_SNEAK, ppplayerListener,
-				Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener,
 				Event.Priority.Normal, this);
 
@@ -152,13 +142,13 @@ public class StyxSpace extends JavaPlugin {
 			scheduler.scheduleSyncRepeatingTask(this, task, 60, 8399);
 		}
 
-		// Setting up Permissions (old)
+		// Setting up Permissions (Nijikok.)
 		setupPermissions();
 		log.info(prefix + " Enabled version " + version);
 	}
 
 	/**
-	 * Get the space world of the server
+	 * Gets the space world of the server
 	 * 
 	 * @return The space world
 	 */
@@ -170,7 +160,7 @@ public class StyxSpace extends JavaPlugin {
 	}
 
 	/**
-	 * Sets up Permissions (old)
+	 * Sets up Permissions (Nijikok.)
 	 */
 	private void setupPermissions() {
 		if (permissionHandler != null) {
@@ -194,7 +184,7 @@ public class StyxSpace extends JavaPlugin {
 	}
 
 	/**
-	 * Called when a player uses /spacev
+	 * Called when a player uses 'spacev'
 	 */
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd,

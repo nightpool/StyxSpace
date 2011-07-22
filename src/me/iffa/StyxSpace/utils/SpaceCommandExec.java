@@ -19,13 +19,14 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 /**
- * CommandExecutor for /space
+ * CommandExecutor for 'space'
  * 
  * @author iffa
  * 
  */
 public class SpaceCommandExec implements CommandExecutor {
 
+	// Variables
 	private Map<Player, Location> exitDest;
 	private Map<Player, Location> enterDest;
 	private Plugin plugin;
@@ -55,7 +56,6 @@ public class SpaceCommandExec implements CommandExecutor {
 							+ "[StyxSpace] You are already in space!");
 					return true;
 				}
-				// save location for exit teleport:
 				exitDest.put(player, player.getLocation());
 				Location location;
 				if (enterDest.containsKey(player)) {
@@ -121,7 +121,8 @@ public class SpaceCommandExec implements CommandExecutor {
 			sender.sendMessage(ChatColor.RED + "[StyxSpace] Usage:");
 			sender.sendMessage(ChatColor.RED + "/space - Go to space");
 			sender.sendMessage(ChatColor.RED + "/space back - Leave space");
-			if (spacePlayer.hasPermission("StyxSpace.teleport.enterothers", player)) {
+			if (spacePlayer.hasPermission("StyxSpace.teleport.enterothers",
+					player)) {
 				sender.sendMessage(ChatColor.RED
 						+ "/space playername - Teleport others to space");
 			}
@@ -155,7 +156,8 @@ public class SpaceCommandExec implements CommandExecutor {
 			sender.sendMessage(ChatColor.RED + "[StyxSpace] Usage:");
 			sender.sendMessage(ChatColor.RED + "/space - Go to space");
 			sender.sendMessage(ChatColor.RED + "/space back - Leave space");
-			if (spacePlayer.hasPermission("StyxSpace.teleport.enterothers", player)) {
+			if (spacePlayer.hasPermission("StyxSpace.teleport.enterothers",
+					player)) {
 				sender.sendMessage(ChatColor.RED
 						+ "/space playername - Teleport others to space");
 			}

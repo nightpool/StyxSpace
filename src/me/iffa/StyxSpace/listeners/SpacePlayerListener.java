@@ -21,7 +21,14 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * PlayerListener.
+ * 
+ * @author iffa
+ * 
+ */
 public class SpacePlayerListener extends PlayerListener {
+	// Variables
 	public static StyxSpace plugin;
 	public SpacePlayer spacePlayer = new SpacePlayer();
 	public static Map<Player, Boolean> isUsed = new HashMap<Player, Boolean>();
@@ -36,6 +43,9 @@ public class SpacePlayerListener extends PlayerListener {
 		plugin = instance;
 	}
 
+	/**
+	 * Called when a player attempts to teleport.
+	 */
 	public void onPlayerTeleport(PlayerTeleportEvent event) {
 		if (event.isCancelled())
 			return;
@@ -49,7 +59,8 @@ public class SpacePlayerListener extends PlayerListener {
 									new ItemStack(SpaceConfig.SPACEHELMET, 1));
 				}
 				if (SpaceConfig.GIVESUIT == true) {
-					spacePlayer.giveSpaceSuit(SpaceConfig.DEFAULT_ARMOR, player);
+					spacePlayer
+							.giveSpaceSuit(SpaceConfig.DEFAULT_ARMOR, player);
 				}
 				if (event.getTo() == StyxSpace.getSpace().getSpawnLocation()) {
 					Location loc = event.getTo();
@@ -77,6 +88,11 @@ public class SpacePlayerListener extends PlayerListener {
 		}
 	}
 
+	/**
+	 * Does something.
+	 * 
+	 * @param player
+	 */
 	public void usedSet(Player player) {
 		if (isUsed.containsKey(player)) {
 			if (isUsed.get(player) == false) {
@@ -87,6 +103,9 @@ public class SpacePlayerListener extends PlayerListener {
 		}
 	}
 
+	/**
+	 * Called when a player attempts to move.
+	 */
 	public void onPlayerMove(PlayerMoveEvent event) {
 		if (event.isCancelled())
 			return;
@@ -104,7 +123,7 @@ public class SpacePlayerListener extends PlayerListener {
 				i++;
 				block = block.getRelative(BlockFace.UP);
 			}
-			// IS IN AREA
+			// Player is in area.
 			if (b == true) {
 				if (inArea.containsKey(event.getPlayer())) {
 					if (inArea.get(event.getPlayer()) == false) {
@@ -117,7 +136,6 @@ public class SpacePlayerListener extends PlayerListener {
 					for (SpaceListener listener : StyxSpace.listeners)
 						listener.onAreaEnter(event.getPlayer());
 				}
-				// REST OF CODE
 				if (isUsed.containsKey(event.getPlayer())) {
 					if (isUsed.get(event.getPlayer()) == true) {
 						StyxSpace.scheduler.cancelTask(taskid.get(event
@@ -126,7 +144,7 @@ public class SpacePlayerListener extends PlayerListener {
 					}
 				}
 
-				// IS NOT IN AREA
+				// Player is not in an area.
 			} else {
 				if (inArea.containsKey(event.getPlayer())) {
 					if (inArea.get(event.getPlayer()) == true) {
@@ -139,7 +157,7 @@ public class SpacePlayerListener extends PlayerListener {
 					for (SpaceListener listener : StyxSpace.listeners)
 						listener.onAreaLeave(event.getPlayer());
 				}
-				// REST OF CODE
+				// Both suit & helmet required
 				if (SpaceConfig.HELMET_REQUIRED == true
 						&& SpaceConfig.SUIT_REQUIRED == true) {
 					if (isUsed.containsKey(event.getPlayer())) {
@@ -186,9 +204,7 @@ public class SpacePlayerListener extends PlayerListener {
 								listener.onSpaceSuffocation(event.getPlayer());
 						}
 					}
-					/**
-					 * HELMET REQUIRED (ONLY)
-					 */
+					// Only helmet required
 				} else if (SpaceConfig.HELMET_REQUIRED == true) {
 					if (isUsed.containsKey(event.getPlayer())) {
 						if (isUsed.get(event.getPlayer()) == true
@@ -230,9 +246,7 @@ public class SpacePlayerListener extends PlayerListener {
 						}
 					}
 
-					/**
-					 * SUIT REQUIRED (ONLY)
-					 */
+					// Only suit required
 				} else if (SpaceConfig.SUIT_REQUIRED == true) {
 					if (isUsed.containsKey(event.getPlayer())) {
 						if (isUsed.get(event.getPlayer()) == true
@@ -286,11 +300,18 @@ public class SpacePlayerListener extends PlayerListener {
 		}
 	}
 
+	/**
+	 * Checks if a player has a spacesuit (of the given armortype)
+	 * 
+	 * @param p
+	 *            Player.
+	 * @param armortype
+	 *            Can be diamond, chainmail, gold, iron or leather.
+	 * @return true if the player has a spacesuit of the type
+	 */
 	private boolean hasSuit(Player p, String armortype) {
 		if (armortype.equalsIgnoreCase("diamond")) {
-			/**
-			 * armortype = "diamond"
-			 */
+			// Diamond
 			if (p.getInventory().getBoots().getType() == Material.DIAMOND_BOOTS
 					&& p.getInventory().getChestplate().getType() == Material.DIAMOND_CHESTPLATE
 					&& p.getInventory().getLeggings().getType() == Material.DIAMOND_LEGGINGS) {
@@ -298,9 +319,7 @@ public class SpacePlayerListener extends PlayerListener {
 			}
 			return false;
 		} else if (armortype.equalsIgnoreCase("chainmail")) {
-			/**
-			 * armortype = "chainmail"
-			 */
+			// Chainmail
 			if (p.getInventory().getBoots().getType() == Material.CHAINMAIL_BOOTS
 					&& p.getInventory().getChestplate().getType() == Material.CHAINMAIL_CHESTPLATE
 					&& p.getInventory().getLeggings().getType() == Material.CHAINMAIL_LEGGINGS) {
@@ -308,9 +327,7 @@ public class SpacePlayerListener extends PlayerListener {
 			}
 			return false;
 		} else if (armortype.equalsIgnoreCase("gold")) {
-			/**
-			 * armortype = "gold"
-			 */
+			// Gold
 			if (p.getInventory().getBoots().getType() == Material.GOLD_BOOTS
 					&& p.getInventory().getChestplate().getType() == Material.GOLD_CHESTPLATE
 					&& p.getInventory().getLeggings().getType() == Material.GOLD_LEGGINGS) {
@@ -318,9 +335,7 @@ public class SpacePlayerListener extends PlayerListener {
 			}
 			return false;
 		} else if (armortype.equalsIgnoreCase("iron")) {
-			/**
-			 * armortype = "iron"
-			 */
+			// Iron
 			if (p.getInventory().getBoots().getType() == Material.IRON_BOOTS
 					&& p.getInventory().getChestplate().getType() == Material.IRON_CHESTPLATE
 					&& p.getInventory().getLeggings().getType() == Material.IRON_LEGGINGS) {
@@ -328,9 +343,7 @@ public class SpacePlayerListener extends PlayerListener {
 			}
 			return false;
 		} else if (armortype.equalsIgnoreCase("leather")) {
-			/**
-			 * armortype = "leather"
-			 */
+			// Leather
 			if (p.getInventory().getBoots().getType() == Material.LEATHER_BOOTS
 					&& p.getInventory().getChestplate().getType() == Material.LEATHER_CHESTPLATE
 					&& p.getInventory().getLeggings().getType() == Material.LEATHER_LEGGINGS) {
@@ -341,6 +354,9 @@ public class SpacePlayerListener extends PlayerListener {
 		return false;
 	}
 
+	/**
+	 * Called when a player quits the game.
+	 */
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		if (taskid.containsKey(event.getPlayer())) {
 			if (StyxSpace.scheduler.isCurrentlyRunning(taskid.get(event
@@ -350,35 +366,35 @@ public class SpacePlayerListener extends PlayerListener {
 		}
 	}
 
+	/**
+	 * Sets the armortype of a player to the specified armortype.
+	 * 
+	 * @param player
+	 * @param armortype
+	 *            Can be diamond, chainmail, gold, iron or leather.
+	 */
 	public void setPlayerSuit(Player player, String armortype) {
 		if (armortype.equalsIgnoreCase("diamond")) {
-			/**
-			 * armortype = "diamond"
-			 */
+			// Diamond
 			armorType.put(player, armortype);
 		} else if (armortype.equalsIgnoreCase("chainmail")) {
-			/**
-			 * armortype = "chainmail"
-			 */
+			// Chainmail
 			armorType.put(player, armortype);
 		} else if (armortype.equalsIgnoreCase("gold")) {
-			/**
-			 * armortype = "gold"
-			 */
+			// Gold
 			armorType.put(player, armortype);
 		} else if (armortype.equalsIgnoreCase("iron")) {
-			/**
-			 * armortype = "iron"
-			 */
+			// Iron
 			armorType.put(player, armortype);
 		} else if (armortype.equalsIgnoreCase("leather")) {
-			/**
-			 * armortype = "leather"
-			 */
+			// Leather
 			armorType.put(player, armortype);
 		}
 	}
 
+	/**
+	 * Called when a player joins the game.
+	 */
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		armorType.put(event.getPlayer(), SpaceConfig.DEFAULT_ARMOR);
 	}

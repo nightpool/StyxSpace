@@ -33,6 +33,7 @@ import org.bukkit.util.config.Configuration;
  */
 public class PlanetsChunkGenerator extends ChunkGenerator {
 
+	// Variables
 	private Map<Material, Float> allowedShells;
 	private Map<Material, Float> allowedCores;
 	private Map<Point, List<Planetoid>> cache;
@@ -50,6 +51,9 @@ public class PlanetsChunkGenerator extends ChunkGenerator {
 	private int minShellSize; // Minimum shell thickness, should be at least 3
 	private Plugin plugin; // ref to plugin
 
+	/**
+	 * Loads allowed blocks
+	 */
 	private void loadAllowedBlocks() {
 		allowedCores = new EnumMap<Material, Float>(Material.class);
 		allowedShells = new EnumMap<Material, Float>(Material.class);
@@ -101,6 +105,9 @@ public class PlanetsChunkGenerator extends ChunkGenerator {
 		cache = new HashMap<Point, List<Planetoid>>();
 	}
 
+	/**
+	 * Generates planets.
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public byte[] generate(World world, Random random, int x, int z) {

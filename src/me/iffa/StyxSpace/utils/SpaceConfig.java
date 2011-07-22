@@ -6,18 +6,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-// Bukkit imports
+
+// Own Imports
 import me.iffa.styxspace.StyxSpace;
 
+// Bukkit Imports
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.util.config.Configuration;
 
+/**
+ * A class that handles the configuration file.
+ * 
+ * @author iffa
+ * 
+ */
 public class SpaceConfig {
-	// General variables
 	private static final Map<String, Object> CONFIG_DEFAULTS = new HashMap<String, Object>();
 	public static Configuration myConfig;
-	// Configuration file values
+
 	public static String WORLD_NAME;
 	public static Boolean ALWAYS_NIGHT;
 	public static Boolean WEATHER;
@@ -31,7 +38,6 @@ public class SpaceConfig {
 	public static Boolean SUIT_REQUIRED;
 	public static Boolean GIVESUIT;
 	public static Boolean FLYING;
-	// Default messages
 	static {
 		// General
 		CONFIG_DEFAULTS.put("styxspace.worldname", "space");
@@ -93,7 +99,11 @@ public class SpaceConfig {
 		CONFIG_DEFAULTS.put("styxspace.planets.blocks.shells", shells);
 	}
 
-	// loadConfig() - made by Pandarr
+	/**
+	 * Initializes the YAML file
+	 * 
+	 * @author Pandarr
+	 */
 	public void loadConfig() {
 		File configFile = new File(Bukkit.getServer().getPluginManager()
 				.getPlugin("StyxSpace").getDataFolder(), "config.yml");

@@ -17,7 +17,7 @@ import me.iffa.styxspace.api.player.SpacePlayer;
 import me.iffa.styxspace.utils.SpacePortalConfig;
 
 /**
- * BlockListener for portal related events
+ * BlockListener for portal related events.
  * 
  * @author iffa
  * 
@@ -31,7 +31,7 @@ public class SpacePortalBListener extends BlockListener {
 	}
 
 	/**
-	 * Called when a sign is changed (after pressing the 'Done' button)
+	 * Called when a sign is changed (after pressing the 'Done' button).
 	 */
 	public void onSignChange(SignChangeEvent event) {
 		Player player = event.getPlayer();
@@ -71,7 +71,7 @@ public class SpacePortalBListener extends BlockListener {
 	}
 
 	/**
-	 * Called when a player removes a block
+	 * Called when a player removes a block.
 	 */
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();
@@ -182,7 +182,7 @@ public class SpacePortalBListener extends BlockListener {
 	}
 
 	/**
-	 * Called when a block physics event happens
+	 * Called when a block physics event happens.
 	 */
 	public void onBlockPhysics(BlockPhysicsEvent event) {
 		if (event.getBlock().getType() == Material.SIGN_POST

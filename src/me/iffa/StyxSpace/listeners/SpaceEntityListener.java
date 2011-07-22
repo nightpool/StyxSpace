@@ -12,6 +12,12 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityListener;
 
+/**
+ * EntityListener.
+ * 
+ * @author iffa
+ * 
+ */
 public class SpaceEntityListener extends EntityListener {
 	public static StyxSpace plugin;
 
@@ -20,6 +26,9 @@ public class SpaceEntityListener extends EntityListener {
 		plugin = instance;
 	}
 
+	/**
+	 * Called when a creature spawns.
+	 */
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
 		if (SpaceConfig.HOSTILE_MOBS == false
 				&& event.getLocation().getWorld() == StyxSpace.getSpace()) {
@@ -54,6 +63,9 @@ public class SpaceEntityListener extends EntityListener {
 		}
 	}
 
+	/**
+	 * Called when an entity takes damage.
+	 */
 	public void onEntityDamage(EntityDamageEvent event) {
 		if (event.isCancelled()) {
 			return;
@@ -72,6 +84,9 @@ public class SpaceEntityListener extends EntityListener {
 		}
 	}
 
+	/**
+	 * Called when an entity dies.
+	 */
 	public void onEntityDeath(EntityDeathEvent event) {
 		if (event.getEntity() instanceof Player) {
 			Player p = (Player) event.getEntity();

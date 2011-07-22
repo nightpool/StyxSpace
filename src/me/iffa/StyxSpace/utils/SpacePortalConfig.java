@@ -5,21 +5,29 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+// Bukkit Imports
 import org.bukkit.Bukkit;
 import org.bukkit.util.config.Configuration;
 
+/**
+ * A class that handles the sign portal file.
+ * 
+ * @author iffa
+ * 
+ */
 public class SpacePortalConfig {
-	// General variables
 	private static final Map<String, Object> CONFIG_DEFAULTS = new HashMap<String, Object>();
 	public static Configuration config;
-	// Configuration file values
-	// Default messages
 	static {
-		// General
 		CONFIG_DEFAULTS.put("StyxSpacePortals", null);
 	}
 
-	// loadConfig() - made by Pandarr
+	/**
+	 * Initializes the YAML file
+	 * 
+	 * @author Pandarr
+	 */
 	public void loadConfig() {
 		File configFile = new File(Bukkit.getServer().getPluginManager()
 				.getPlugin("StyxSpace").getDataFolder(), "portals.yml");

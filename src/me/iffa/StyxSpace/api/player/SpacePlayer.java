@@ -9,6 +9,12 @@ import me.iffa.styxspace.StyxSpace;
 import me.iffa.styxspace.listeners.SpacePlayerListener;
 import me.iffa.styxspace.utils.SpaceConfig;
 
+/**
+ * Player related methods.
+ * 
+ * @author iffa
+ * 
+ */
 public class SpacePlayer {
 	/**
 	 * Checks if a player is in space.
