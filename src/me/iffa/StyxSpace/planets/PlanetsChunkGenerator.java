@@ -1,5 +1,6 @@
 package me.iffa.styxspace.planets;
 
+// Java Imports
 import java.awt.Point;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,8 +15,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+// StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
 
+// Bukkit Imports
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;

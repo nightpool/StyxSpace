@@ -1,5 +1,6 @@
 package me.iffa.styxspace.listeners;
 
+// Bukkit Imports
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,6 +12,7 @@ import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.SignChangeEvent;
 
+// StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
 import me.iffa.styxspace.api.SpaceListener;
 import me.iffa.styxspace.api.player.SpacePlayer;

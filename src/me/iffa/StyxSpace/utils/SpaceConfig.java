@@ -1,13 +1,13 @@
 package me.iffa.styxspace.utils;
 
-// Java imports
+// Java Imports
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// Own Imports
+//StyxSpace Import
 import me.iffa.styxspace.StyxSpace;
 
 // Bukkit Imports

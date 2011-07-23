@@ -4,6 +4,7 @@ package me.iffa.styxspace;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
+
 // StyxSpace imports
 import me.iffa.styxspace.api.*;
 import me.iffa.styxspace.listeners.SpaceEntityListener;
@@ -17,6 +18,7 @@ import me.iffa.styxspace.utils.SpaceChunkGenerator;
 import me.iffa.styxspace.utils.SpaceCommandExec;
 import me.iffa.styxspace.utils.SpaceConfig;
 import me.iffa.styxspace.utils.SpacePortalConfig;
+
 // Bukkit imports
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,7 +30,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.scheduler.BukkitScheduler;
-// Permissions
+
+//Permissions (Nijiko)
 import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
 
@@ -142,7 +145,7 @@ public class StyxSpace extends JavaPlugin {
 			scheduler.scheduleSyncRepeatingTask(this, task, 60, 8399);
 		}
 
-		// Setting up Permissions (Nijikok.)
+		// Setting up Permissions (Nijiko)
 		setupPermissions();
 		log.info(prefix + " Enabled version " + version);
 	}
@@ -160,7 +163,7 @@ public class StyxSpace extends JavaPlugin {
 	}
 
 	/**
-	 * Sets up Permissions (Nijikok.)
+	 * Sets up Permissions (Nijiko)
 	 */
 	private void setupPermissions() {
 		if (permissionHandler != null) {

@@ -1,8 +1,10 @@
 package me.iffa.styxspace.listeners;
 
+// StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
 import me.iffa.styxspace.utils.SpaceConfig;
 
+// Bukkit Imports
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.event.weather.WeatherListener;
 

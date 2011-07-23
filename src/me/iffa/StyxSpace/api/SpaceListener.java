@@ -1,10 +1,15 @@
 package me.iffa.styxspace.api;
 
-import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-
-import me.iffa.styxspace.StyxSpace;
+// StyxSpace Imports
+import me.iffa.styxspace.api.event.AntiMobSpawnEvent;
+import me.iffa.styxspace.api.event.PlayerEnterAreaEvent;
+import me.iffa.styxspace.api.event.PlayerLeaveAreaEvent;
+import me.iffa.styxspace.api.event.PortalCreateEvent;
+import me.iffa.styxspace.api.event.PortalRemoveEvent;
+import me.iffa.styxspace.api.event.PortalUseEvent;
+import me.iffa.styxspace.api.event.SpaceCommandEvent;
+import me.iffa.styxspace.api.event.SpaceSuffocationEvent;
+import me.iffa.styxspace.api.event.TeleportToSpaceEvent;
 
 /**
  * Listener for events of StyxSpace.
@@ -12,98 +17,77 @@ import me.iffa.styxspace.StyxSpace;
  * @author iffa
  * 
  */
-public class SpaceListener {
-	protected StyxSpace plugin;
-
-	public SpaceListener() {
-		StyxSpace.listeners.add(this);
-	}
-
+public interface SpaceListener {
 	/**
 	 * Called when a player enters a breathable area.
 	 * 
-	 * @param player
-	 *            Player that entered a breathable area
+	 * @param event
+	 *            Event data
 	 */
-	public void onAreaEnter(Player player) {
-	}
+	public void onAreaEnter(PlayerEnterAreaEvent event);
 
 	/**
 	 * Called when a player leaves a breathable area.
 	 * 
-	 * @param player
-	 *            Player that left a breathable area
+	 * @param event
+	 *            Event data
 	 */
-	public void onAreaLeave(Player player) {
-	}
+	public void onAreaLeave(PlayerLeaveAreaEvent event);
 
 	/**
 	 * Called when a player teleports to space.
 	 * 
-	 * @param player
-	 *            Player that teleported to space
+	 * @param event
+	 *            Event data
 	 */
-	public void onTeleportToSpace(Player player, Location destination) {
-	}
+	public void onTeleportToSpace(TeleportToSpaceEvent event);
 
 	/**
 	 * Called when a player starts suffocating (for having no helmet, suit or
 	 * both).
 	 * 
-	 * @param player
-	 *            Player that is suffocating
+	 * @param event
+	 *            Event data
 	 */
-	public void onSpaceSuffocation(Player player) {
-	}
+	public void onSpaceSuffocation(SpaceSuffocationEvent event);
 
 	/**
 	 * Called when a player uses a sign portal.
 	 * 
-	 * @param player
-	 *            Player that used a sign portal
+	 * @param event
+	 *            Event data
 	 */
-	public void onPortalUse(Player player, Location destination) {
-	}
+	public void onPortalUse(PortalUseEvent event);
 
 	/**
 	 * Called when a player creates a sign portal.
 	 * 
-	 * @param player
-	 *            Player that created a sign portal
-	 * @param portalname
-	 *            Name of the portal created
+	 * @param event
+	 *            Event data
 	 */
-	public void onPortalCreate(Player player, String portalname) {
-	}
+	public void onPortalCreate(PortalCreateEvent event);
 
 	/**
 	 * Called when a player destroys/removes a sign portal.
 	 * 
-	 * @param player
-	 *            Player that removed a sign portal
-	 * @param portalname
-	 *            Name of the portal removed
+	 * @param event
+	 *            Event data
 	 */
-	public void onPortalRemove(Player player, String portalname) {
-	}
+	public void onPortalRemove(PortalRemoveEvent event);
 
 	/**
 	 * Called when a player uses the space command.
 	 * 
-	 * @param player
-	 *            Player that used the space command
+	 * @param event
+	 *            Event data
 	 */
-	public void onSpaceCommand(Player player) {
-	}
+	public void onSpaceCommand(SpaceCommandEvent event);
 
 	/**
 	 * Called when an entity is not allowed to spawn in space.
 	 * 
-	 * @param entity
-	 *            Entity that wasn't allowed to spawn
-	 * @param isHostile
-	 *            If the entity was hostile
+	 * @param event
+	 *            Event data
 	 */
-	public void onAntiMobSpawn(Entity entity, boolean isHostile) {
-	}
+	public void onAntiMobSpawn(AntiMobSpawnEvent event);
 }

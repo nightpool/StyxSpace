@@ -1,6 +1,9 @@
 package me.iffa.styxspace.planets;
 
+// Java Imports
 import java.io.Serializable;
+
+// Bukkit Imports
 import org.bukkit.Material;
 
 /**

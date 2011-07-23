@@ -1,8 +1,10 @@
 package me.iffa.styxspace.utils;
 
+// Java Imports
 import java.util.Arrays;
 import java.util.Random;
 
+// Bukkit Imports
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator;

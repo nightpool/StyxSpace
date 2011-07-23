@@ -1,12 +1,15 @@
 package me.iffa.styxspace.utils;
 
+// Java Imports
 import java.util.HashMap;
 import java.util.Map;
 
+// StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
 import me.iffa.styxspace.api.SpaceListener;
 import me.iffa.styxspace.api.player.SpacePlayer;
 
+// Bukkit Imports
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Chunk;

@@ -1,10 +1,12 @@
 package me.iffa.styxspace.api.player;
 
+// Bukkit Imports
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+// StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
 import me.iffa.styxspace.listeners.SpacePlayerListener;
 import me.iffa.styxspace.utils.SpaceConfig;

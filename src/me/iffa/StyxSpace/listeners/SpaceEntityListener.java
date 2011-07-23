@@ -1,9 +1,11 @@
 package me.iffa.styxspace.listeners;
 
+// StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
 import me.iffa.styxspace.api.SpaceListener;
 import me.iffa.styxspace.utils.SpaceConfig;
 
+// Bukkit Imports
 import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;

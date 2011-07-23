@@ -1,10 +1,12 @@
 package me.iffa.styxspace.listeners;
 
+// StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
 import me.iffa.styxspace.api.SpaceListener;
 import me.iffa.styxspace.api.player.SpacePlayer;
 import me.iffa.styxspace.utils.SpacePortalConfig;
 
+// Bukkit Imports
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
