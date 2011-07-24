@@ -1,12 +1,9 @@
 package me.iffa.styxspace;
 
 // Java imports
-import java.util.HashSet;
-import java.util.Set;
 import java.util.logging.Logger;
 
 // StyxSpace imports
-import me.iffa.styxspace.api.*;
 import me.iffa.styxspace.listeners.SpaceEntityListener;
 import me.iffa.styxspace.listeners.SpacePlayerListener;
 import me.iffa.styxspace.listeners.SpacePortalBListener;
@@ -48,7 +45,7 @@ public class StyxSpace extends JavaPlugin {
 
 	// Variables
 	public static String prefix = "[StyxSpace]";
-	public static String version = "0.9 [Netherrack]";
+	public static String version = "1.0 [Graduation]";
 	public static Logger log = Logger.getLogger("Minecraft");
 	public static World space = null;
 	public static BukkitScheduler scheduler;
@@ -70,9 +67,6 @@ public class StyxSpace extends JavaPlugin {
 	// BlockListener (portals)
 	private final SpacePortalBListener bListener = new SpacePortalBListener(
 			this);
-
-	// Plugins using SpaceListener
-	public static Set<SpaceListener> listeners = new HashSet<SpaceListener>();
 
 	/**
 	 * Called when the plugin is loaded

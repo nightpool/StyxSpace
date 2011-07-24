@@ -23,10 +23,6 @@ import me.iffa.styxspace.api.event.portal.PortalUseEvent;
  * 
  */
 public class SpaceListener extends CustomEventListener implements Listener {
-	// InventoryCloseEvent event = new
-	// InventoryCloseEvent((Player)this.player.getBukkitEntity(), inventory,
-	// getDefaultInventory(), activeLocation);
-	// Bukkit.getServer().getPluginManager().callEvent(event);
 	/**
 	 * Called when a player enters a breathable area.
 	 * 
