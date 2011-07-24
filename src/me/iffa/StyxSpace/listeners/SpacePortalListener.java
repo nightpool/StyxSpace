@@ -2,7 +2,7 @@ package me.iffa.styxspace.listeners;
 
 // StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
-import me.iffa.styxspace.api.SpaceListener;
+import me.iffa.styxspace.api.event.misc.TeleportToSpaceEvent;
 import me.iffa.styxspace.api.player.SpacePlayer;
 import me.iffa.styxspace.utils.SpacePortalConfig;
 
@@ -101,21 +101,28 @@ public class SpacePortalListener extends PlayerListener {
 										.getSpace()
 										&& tpDest.getWorld() == StyxSpace
 												.getSpace()) {
-									event.getPlayer().teleport(tpDest);
 									// Notify listeners.
-									for (SpaceListener listener : StyxSpace.listeners)
-										listener.onTeleportToSpace(
-												event.getPlayer(), tpDest);
-									return;
+									TeleportToSpaceEvent e = new TeleportToSpaceEvent(
+											"SpaceSuffocationEvent",
+											event.getPlayer(), tpDest);
+									if (e.isCancelled()) {
+										event.setCancelled(true);
+										return;
+									}
+									event.getPlayer().teleport(tpDest);
 								} else if (event.getPlayer().getWorld() == StyxSpace
 										.getSpace()
 										&& tpDest.getWorld() != StyxSpace
 												.getSpace()) {
-									event.getPlayer().teleport(tpDest);
 									// Notify listeners.
-									for (SpaceListener listener : StyxSpace.listeners)
-										listener.onTeleportToSpace(
-												event.getPlayer(), tpDest);
+									TeleportToSpaceEvent e = new TeleportToSpaceEvent(
+											"SpaceSuffocationEvent",
+											event.getPlayer(), tpDest);
+									if (e.isCancelled()) {
+										event.setCancelled(true);
+										return;
+									}
+									event.getPlayer().teleport(tpDest);
 									return;
 								}
 							}

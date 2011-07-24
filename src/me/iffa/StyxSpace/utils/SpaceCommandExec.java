@@ -6,7 +6,7 @@ import java.util.Map;
 
 // StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
-import me.iffa.styxspace.api.SpaceListener;
+import me.iffa.styxspace.api.event.misc.SpaceCommandEvent;
 import me.iffa.styxspace.api.player.SpacePlayer;
 
 // Bukkit Imports
@@ -47,11 +47,13 @@ public class SpaceCommandExec implements CommandExecutor {
 	 */
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String args[]) {
-		Player sex = (Player) sender;
 		Player player = (Player) sender;
 		// Notify listeners.
-		for (SpaceListener listener : StyxSpace.listeners)
-			listener.onSpaceCommand(sex);
+		SpaceCommandEvent e = new SpaceCommandEvent("SpaceSuffocationEvent",
+				player, args);
+		if (e.isCancelled()) {
+			return true;
+		}
 		if (args.length == 0 && sender instanceof Player) {
 			if (spacePlayer.hasPermission("styxspace.teleport.enter", player)) {
 				if (player.getWorld() == StyxSpace.getSpace()) {

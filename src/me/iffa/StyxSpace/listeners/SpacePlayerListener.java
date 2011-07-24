@@ -4,11 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import me.iffa.styxspace.StyxSpace;
-import me.iffa.styxspace.api.SpaceListener;
+import me.iffa.styxspace.api.event.area.AreaEnterEvent;
+import me.iffa.styxspace.api.event.area.AreaLeaveEvent;
+import me.iffa.styxspace.api.event.misc.SpaceSuffocationEvent;
+import me.iffa.styxspace.api.event.misc.TeleportToSpaceEvent;
 import me.iffa.styxspace.api.player.SpacePlayer;
 import me.iffa.styxspace.schedulers.SpaceRunnable2;
 import me.iffa.styxspace.utils.SpaceConfig;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -70,8 +74,12 @@ public class SpacePlayerListener extends PlayerListener {
 					}
 				}
 				// Notify listeners.
-				for (SpaceListener listener : StyxSpace.listeners)
-					listener.onTeleportToSpace(event.getPlayer(), event.getTo());
+				TeleportToSpaceEvent e = new TeleportToSpaceEvent(
+						"TeleportToSpaceEvent", event.getPlayer(), event.getTo());
+				Bukkit.getServer().getPluginManager().callEvent(e);
+				if(e.isCancelled()){
+					event.setCancelled(true);
+				}
 				fixDupe.put(event.getPlayer(), true);
 			} else if (event.getTo().getWorld() != StyxSpace.getSpace()
 					&& event.getFrom().getWorld() == StyxSpace.getSpace()) {
@@ -128,13 +136,17 @@ public class SpacePlayerListener extends PlayerListener {
 				if (inArea.containsKey(event.getPlayer())) {
 					if (inArea.get(event.getPlayer()) == false) {
 						inArea.put(event.getPlayer(), true);
-						for (SpaceListener listener : StyxSpace.listeners)
-							listener.onAreaEnter(event.getPlayer());
+						// Notify listeners.
+						AreaEnterEvent e = new AreaEnterEvent(
+								event.getPlayer());
+						Bukkit.getServer().getPluginManager().callEvent(e);
 					}
 				} else {
 					inArea.put(event.getPlayer(), true);
-					for (SpaceListener listener : StyxSpace.listeners)
-						listener.onAreaEnter(event.getPlayer());
+					// Notify listeners.
+					AreaEnterEvent e = new AreaEnterEvent(
+							event.getPlayer());
+					Bukkit.getServer().getPluginManager().callEvent(e);
 				}
 				if (isUsed.containsKey(event.getPlayer())) {
 					if (isUsed.get(event.getPlayer()) == true) {
@@ -149,13 +161,17 @@ public class SpacePlayerListener extends PlayerListener {
 				if (inArea.containsKey(event.getPlayer())) {
 					if (inArea.get(event.getPlayer()) == true) {
 						inArea.put(event.getPlayer(), false);
-						for (SpaceListener listener : StyxSpace.listeners)
-							listener.onAreaLeave(event.getPlayer());
+						// Notify listeners.
+						AreaLeaveEvent e = new AreaLeaveEvent(
+								event.getPlayer());
+						Bukkit.getServer().getPluginManager().callEvent(e);
 					}
 				} else {
 					inArea.put(event.getPlayer(), false);
-					for (SpaceListener listener : StyxSpace.listeners)
-						listener.onAreaLeave(event.getPlayer());
+					// Notify listeners.
+					AreaLeaveEvent e = new AreaLeaveEvent(
+							event.getPlayer());
+					Bukkit.getServer().getPluginManager().callEvent(e);
 				}
 				// Both suit & helmet required
 				if (SpaceConfig.HELMET_REQUIRED == true
@@ -182,8 +198,9 @@ public class SpacePlayerListener extends PlayerListener {
 							taskid.put(event.getPlayer(), taskInt);
 							isUsed.put(event.getPlayer(), true);
 							// Notify listeners.
-							for (SpaceListener listener : StyxSpace.listeners)
-								listener.onSpaceSuffocation(event.getPlayer());
+							SpaceSuffocationEvent e = new SpaceSuffocationEvent(
+									"SpaceSuffocationEvent", event.getPlayer());
+							Bukkit.getServer().getPluginManager().callEvent(e);
 						}
 					} else {
 						if (event.getPlayer().getInventory().getHelmet()
@@ -200,8 +217,9 @@ public class SpacePlayerListener extends PlayerListener {
 							taskid.put(event.getPlayer(), taskInt);
 							isUsed.put(event.getPlayer(), true);
 							// Notify listeners.
-							for (SpaceListener listener : StyxSpace.listeners)
-								listener.onSpaceSuffocation(event.getPlayer());
+							SpaceSuffocationEvent e = new SpaceSuffocationEvent(
+									"SpaceSuffocationEvent", event.getPlayer());
+							Bukkit.getServer().getPluginManager().callEvent(e);
 						}
 					}
 					// Only helmet required
@@ -224,8 +242,9 @@ public class SpacePlayerListener extends PlayerListener {
 							taskid.put(event.getPlayer(), taskInt);
 							isUsed.put(event.getPlayer(), true);
 							// Notify listeners.
-							for (SpaceListener listener : StyxSpace.listeners)
-								listener.onSpaceSuffocation(event.getPlayer());
+							SpaceSuffocationEvent e = new SpaceSuffocationEvent(
+									"SpaceSuffocationEvent", event.getPlayer());
+							Bukkit.getServer().getPluginManager().callEvent(e);
 
 						}
 					} else {
@@ -241,8 +260,9 @@ public class SpacePlayerListener extends PlayerListener {
 							taskid.put(event.getPlayer(), taskInt);
 							isUsed.put(event.getPlayer(), true);
 							// Notify listeners.
-							for (SpaceListener listener : StyxSpace.listeners)
-								listener.onSpaceSuffocation(event.getPlayer());
+							SpaceSuffocationEvent e = new SpaceSuffocationEvent(
+									"SpaceSuffocationEvent", event.getPlayer());
+							Bukkit.getServer().getPluginManager().callEvent(e);
 						}
 					}
 
@@ -266,8 +286,9 @@ public class SpacePlayerListener extends PlayerListener {
 							taskid.put(event.getPlayer(), taskInt);
 							isUsed.put(event.getPlayer(), true);
 							// Notify listeners.
-							for (SpaceListener listener : StyxSpace.listeners)
-								listener.onSpaceSuffocation(event.getPlayer());
+							SpaceSuffocationEvent e = new SpaceSuffocationEvent(
+									"SpaceSuffocationEvent", event.getPlayer());
+							Bukkit.getServer().getPluginManager().callEvent(e);
 
 						}
 					} else {
@@ -283,8 +304,9 @@ public class SpacePlayerListener extends PlayerListener {
 							taskid.put(event.getPlayer(), taskInt);
 							isUsed.put(event.getPlayer(), true);
 							// Notify listeners.
-							for (SpaceListener listener : StyxSpace.listeners)
-								listener.onSpaceSuffocation(event.getPlayer());
+							SpaceSuffocationEvent e = new SpaceSuffocationEvent(
+									"SpaceSuffocationEvent", event.getPlayer());
+							Bukkit.getServer().getPluginManager().callEvent(e);
 						}
 					}
 

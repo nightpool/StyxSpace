@@ -10,7 +10,7 @@ import org.bukkit.event.Event;
  * 
  * @author iffa
  */
-public abstract class SpaceSuffocationEvent extends Event implements
+public class SpaceSuffocationEvent extends Event implements
 		Cancellable {
 	private static final long serialVersionUID = 8772846319048911013L;
 	protected boolean canceled = false;

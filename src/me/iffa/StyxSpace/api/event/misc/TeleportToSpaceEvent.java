@@ -11,7 +11,7 @@ import org.bukkit.event.Event;
  * 
  * @author iffa
  */
-public abstract class TeleportToSpaceEvent extends Event implements Cancellable {
+public class TeleportToSpaceEvent extends Event implements Cancellable {
 	private static final long serialVersionUID = 8744071438699676557L;
 	protected boolean canceled = false;
 	protected Player player = null;

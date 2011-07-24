@@ -1,6 +1,7 @@
 package me.iffa.styxspace.listeners;
 
 // Bukkit Imports
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,7 +15,8 @@ import org.bukkit.event.block.SignChangeEvent;
 
 // StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
-import me.iffa.styxspace.api.SpaceListener;
+import me.iffa.styxspace.api.event.portal.PortalCreateEvent;
+import me.iffa.styxspace.api.event.portal.PortalRemoveEvent;
 import me.iffa.styxspace.api.player.SpacePlayer;
 import me.iffa.styxspace.utils.SpacePortalConfig;
 
@@ -42,6 +44,14 @@ public class SpacePortalBListener extends BlockListener {
 						+ event.getLine(1) + ".world") == null) {
 			if (spacePlayer.hasPermission("StyxSpace.portal.create", player)) {
 				Sign sign = (Sign) event.getBlock().getState();
+				// Notify listeners.
+				PortalCreateEvent e = new PortalCreateEvent(
+						"SpaceSuffocationEvent", event.getPlayer(),
+						event.getLine(1));
+				if (e.isCancelled()) {
+					return;
+				}
+				Bukkit.getServer().getPluginManager().callEvent(e);
 				SpacePortalConfig.config.setProperty("StyxSpacePortals."
 						+ event.getLine(1) + ".world", sign.getWorld()
 						.getName());
@@ -57,9 +67,6 @@ public class SpacePortalBListener extends BlockListener {
 								+ " Created portal '" + event.getLine(1)
 								+ "' with destination '" + event.getLine(2)
 								+ "'");
-				// Notify listeners.
-				for (SpaceListener listener : StyxSpace.listeners)
-					listener.onPortalCreate(event.getPlayer(), sign.getLine(1));
 				return;
 			} else {
 				event.getPlayer()
@@ -84,6 +91,14 @@ public class SpacePortalBListener extends BlockListener {
 				if (spacePlayer.hasPermission("StyxSpace.portal.destroy",
 						player)) {
 					String name = sign.getLine(1);
+					// Notify listeners.
+					PortalRemoveEvent e = new PortalRemoveEvent(
+							"SpaceSuffocationEvent", event.getPlayer(), name,
+							false);
+					if (e.isCancelled()) {
+						event.setCancelled(true);
+						return;
+					}
 					if (SpacePortalConfig.config
 							.getProperty("StyxSpacePortals." + name) != null) {
 						SpacePortalConfig.config
@@ -94,10 +109,6 @@ public class SpacePortalBListener extends BlockListener {
 								ChatColor.GREEN
 										+ "[StyxSpace] Removed portal '" + name
 										+ "'");
-						// Notify listeners.
-						for (SpaceListener listener : StyxSpace.listeners)
-							listener.onPortalRemove(event.getPlayer(),
-									sign.getLine(1));
 					}
 				} else {
 					event.setCancelled(true);
@@ -190,6 +201,13 @@ public class SpacePortalBListener extends BlockListener {
 		if (event.getBlock().getType() == Material.SIGN_POST
 				|| event.getBlock().getType() == Material.WALL_SIGN) {
 			Sign sign = (Sign) event.getBlock().getState();
+			// Notify listeners.
+			PortalRemoveEvent e = new PortalRemoveEvent(
+					"SpaceSuffocationEvent", null, sign.getLine(1), true);
+			if (e.isCancelled()) {
+				event.setCancelled(true);
+				return;
+			}
 			if (sign.getLine(0).equalsIgnoreCase("[StyxSpace]")
 					&& SpacePortalConfig.config.getProperty("StyxSpacePortals."
 							+ sign.getLine(1)) != null) {

@@ -10,7 +10,7 @@ import org.bukkit.event.Event;
  * 
  * @author iffa
  */
-public abstract class AntiMobSpawnEvent extends Event implements Cancellable {
+public class AntiMobSpawnEvent extends Event implements Cancellable {
 	private static final long serialVersionUID = 5531881415618226310L;
 	protected boolean canceled = false;
 	protected Entity entity = null;

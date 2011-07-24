@@ -2,10 +2,11 @@ package me.iffa.styxspace.listeners;
 
 // StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
-import me.iffa.styxspace.api.SpaceListener;
+import me.iffa.styxspace.api.event.misc.AntiMobSpawnEvent;
 import me.iffa.styxspace.utils.SpaceConfig;
 
 // Bukkit Imports
+import org.bukkit.Bukkit;
 import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;
@@ -43,10 +44,13 @@ public class SpaceEntityListener extends EntityListener {
 					|| event.getCreatureType() == CreatureType.SPIDER
 					|| event.getCreatureType() == CreatureType.ZOMBIE
 					|| event.getCreatureType() == CreatureType.SLIME) {
-				event.setCancelled(true);
 				// Notify listeners.
-				for (SpaceListener listener : StyxSpace.listeners)
-					listener.onAntiMobSpawn(event.getEntity(), true);
+				AntiMobSpawnEvent e = new AntiMobSpawnEvent(
+						"AntiMobSpawnEvent", event.getEntity());
+				Bukkit.getServer().getPluginManager().callEvent(e);
+				if (!e.isCancelled()) {
+					event.setCancelled(true);
+				}
 			}
 		}
 		if (SpaceConfig.NEUTRAL_MOBS == false
@@ -57,10 +61,13 @@ public class SpaceEntityListener extends EntityListener {
 					|| event.getCreatureType() == CreatureType.SHEEP
 					|| event.getCreatureType() == CreatureType.SQUID
 					|| event.getCreatureType() == CreatureType.WOLF) {
-				event.setCancelled(true);
 				// Notify listeners.
-				for (SpaceListener listener : StyxSpace.listeners)
-					listener.onAntiMobSpawn(event.getEntity(), false);
+				AntiMobSpawnEvent e = new AntiMobSpawnEvent(
+						"AntiMobSpawnEvent", event.getEntity());
+				Bukkit.getServer().getPluginManager().callEvent(e);
+				if (!e.isCancelled()) {
+					event.setCancelled(true);
+				}
 			}
 		}
 	}
