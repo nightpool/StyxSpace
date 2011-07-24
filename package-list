@@ -1,2 +1,10 @@
+me.iffa.styxspace
 me.iffa.styxspace.api
+me.iffa.styxspace.api.event.area
+me.iffa.styxspace.api.event.misc
+me.iffa.styxspace.api.event.portal
 me.iffa.styxspace.api.player
+me.iffa.styxspace.listeners
+me.iffa.styxspace.planets
+me.iffa.styxspace.schedulers
+me.iffa.styxspace.utils
