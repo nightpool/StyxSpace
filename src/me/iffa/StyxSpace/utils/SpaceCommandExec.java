@@ -130,6 +130,10 @@ public class SpaceCommandExec implements CommandExecutor {
 				sender.sendMessage(ChatColor.RED
 						+ "/space playername - Teleport others to space");
 			}
+			if (spacePlayer.hasPermission("StyxSpace.admin.reload", player)) {
+				sender.sendMessage(ChatColor.RED
+						+ "/space reload - Reloads the configuration file");
+			}
 			sender.sendMessage(ChatColor.RED
 					+ "/space help - Brings up this help message");
 			return true;
@@ -198,6 +202,10 @@ public class SpaceCommandExec implements CommandExecutor {
 					player)) {
 				sender.sendMessage(ChatColor.RED
 						+ "/space playername - Teleport others to space");
+			}
+			if (spacePlayer.hasPermission("StyxSpace.admin.reload", player)) {
+				sender.sendMessage(ChatColor.RED
+						+ "/space reload - Reloads the configuration file");
 			}
 			sender.sendMessage(ChatColor.RED
 					+ "/space help - Brings up this help message");
