@@ -1,15 +1,20 @@
 package me.iffa.styxspace.api;
 
+// Bukkit Imports
+import org.bukkit.event.CustomEventListener;
+import org.bukkit.event.Event;
+import org.bukkit.event.Listener;
+
 // StyxSpace Imports
-import me.iffa.styxspace.api.event.AntiMobSpawnEvent;
-import me.iffa.styxspace.api.event.PlayerEnterAreaEvent;
-import me.iffa.styxspace.api.event.PlayerLeaveAreaEvent;
-import me.iffa.styxspace.api.event.PortalCreateEvent;
-import me.iffa.styxspace.api.event.PortalRemoveEvent;
-import me.iffa.styxspace.api.event.PortalUseEvent;
-import me.iffa.styxspace.api.event.SpaceCommandEvent;
-import me.iffa.styxspace.api.event.SpaceSuffocationEvent;
-import me.iffa.styxspace.api.event.TeleportToSpaceEvent;
+import me.iffa.styxspace.api.event.area.AreaEnterEvent;
+import me.iffa.styxspace.api.event.area.AreaLeaveEvent;
+import me.iffa.styxspace.api.event.misc.AntiMobSpawnEvent;
+import me.iffa.styxspace.api.event.misc.SpaceCommandEvent;
+import me.iffa.styxspace.api.event.misc.SpaceSuffocationEvent;
+import me.iffa.styxspace.api.event.misc.TeleportToSpaceEvent;
+import me.iffa.styxspace.api.event.portal.PortalCreateEvent;
+import me.iffa.styxspace.api.event.portal.PortalRemoveEvent;
+import me.iffa.styxspace.api.event.portal.PortalUseEvent;
 
 /**
  * Listener for events of StyxSpace.
@@ -17,14 +22,19 @@ import me.iffa.styxspace.api.event.TeleportToSpaceEvent;
  * @author iffa
  * 
  */
-public interface SpaceListener {
+public class SpaceListener extends CustomEventListener implements Listener {
+	// InventoryCloseEvent event = new
+	// InventoryCloseEvent((Player)this.player.getBukkitEntity(), inventory,
+	// getDefaultInventory(), activeLocation);
+	// Bukkit.getServer().getPluginManager().callEvent(event);
 	/**
 	 * Called when a player enters a breathable area.
 	 * 
 	 * @param event
 	 *            Event data
 	 */
-	public void onAreaEnter(PlayerEnterAreaEvent event);
+	public void onAreaEnter(AreaEnterEvent event) {
+	}
 
 	/**
 	 * Called when a player leaves a breathable area.
@@ -32,7 +42,8 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onAreaLeave(PlayerLeaveAreaEvent event);
+	public void onAreaLeave(AreaLeaveEvent event) {
+	}
 
 	/**
 	 * Called when a player teleports to space.
@@ -40,7 +51,8 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onTeleportToSpace(TeleportToSpaceEvent event);
+	public void onTeleportToSpace(TeleportToSpaceEvent event) {
+	}
 
 	/**
 	 * Called when a player starts suffocating (for having no helmet, suit or
@@ -49,7 +61,8 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onSpaceSuffocation(SpaceSuffocationEvent event);
+	public void onSpaceSuffocation(SpaceSuffocationEvent event) {
+	}
 
 	/**
 	 * Called when a player uses a sign portal.
@@ -57,7 +70,8 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onPortalUse(PortalUseEvent event);
+	public void onPortalUse(PortalUseEvent event) {
+	}
 
 	/**
 	 * Called when a player creates a sign portal.
@@ -65,7 +79,8 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onPortalCreate(PortalCreateEvent event);
+	public void onPortalCreate(PortalCreateEvent event) {
+	}
 
 	/**
 	 * Called when a player destroys/removes a sign portal.
@@ -73,7 +88,8 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onPortalRemove(PortalRemoveEvent event);
+	public void onPortalRemove(PortalRemoveEvent event) {
+	}
 
 	/**
 	 * Called when a player uses the space command.
@@ -81,7 +97,8 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onSpaceCommand(SpaceCommandEvent event);
+	public void onSpaceCommand(SpaceCommandEvent event) {
+	}
 
 	/**
 	 * Called when an entity is not allowed to spawn in space.
@@ -89,5 +106,32 @@ public interface SpaceListener {
 	 * @param event
 	 *            Event data
 	 */
-	public void onAntiMobSpawn(AntiMobSpawnEvent event);
+	public void onAntiMobSpawn(AntiMobSpawnEvent event) {
+	}
+
+	/**
+	 * Handles calling the events (like a boss).
+	 */
+	@Override
+	public void onCustomEvent(Event event) {
+		if (event instanceof AreaEnterEvent) {
+			onAreaEnter((AreaEnterEvent) event);
+		} else if (event instanceof AreaLeaveEvent) {
+			onAreaLeave((AreaLeaveEvent) event);
+		} else if (event instanceof PortalCreateEvent) {
+			onPortalCreate((PortalCreateEvent) event);
+		} else if (event instanceof PortalUseEvent) {
+			onPortalUse((PortalUseEvent) event);
+		} else if (event instanceof PortalRemoveEvent) {
+			onPortalRemove((PortalRemoveEvent) event);
+		} else if (event instanceof TeleportToSpaceEvent) {
+			onTeleportToSpace((TeleportToSpaceEvent) event);
+		} else if (event instanceof SpaceCommandEvent) {
+			onSpaceCommand((SpaceCommandEvent) event);
+		} else if (event instanceof AntiMobSpawnEvent) {
+			onAntiMobSpawn((AntiMobSpawnEvent) event);
+		} else if (event instanceof SpaceSuffocationEvent) {
+			onSpaceSuffocation((SpaceSuffocationEvent) event);
+		}
+	}
 }
