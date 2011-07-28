@@ -38,6 +38,7 @@ public class SpaceConfig {
 	public static Boolean SUIT_REQUIRED;
 	public static Boolean GIVESUIT;
 	public static Boolean FLYING;
+        public static Integer GLOWSTONE_CHANCE;
 	static {
 		// General
 		CONFIG_DEFAULTS.put("styxspace.worldname", "space");
@@ -53,6 +54,7 @@ public class SpaceConfig {
 		CONFIG_DEFAULTS.put("styxspace.suit.givesuit", false);
 		CONFIG_DEFAULTS.put("styxspace.suit.armortype", "iron");
 		CONFIG_DEFAULTS.put("styxspace.enablegravity", true);
+                CONFIG_DEFAULTS.put("styxspace.glowstonechance", 1); 
 		// Planetoids
 		CONFIG_DEFAULTS.put("styxspace.planets.generateplanets", true);
 		CONFIG_DEFAULTS.put("styxspace.planets.seed", -1);
@@ -101,8 +103,6 @@ public class SpaceConfig {
 
 	/**
 	 * Initializes the YAML file
-	 * 
-	 * @author Pandarr
 	 */
 	public void loadConfig() {
 		File configFile = new File(Bukkit.getServer().getPluginManager()
@@ -137,6 +137,7 @@ public class SpaceConfig {
 			ROOM_HEIGHT = myConfig.getInt(
 					"styxspace.breathingarea.maxroomheight", 5);
 			FLYING = myConfig.getBoolean("styxspace.enablegravity", true);
+                        GLOWSTONE_CHANCE = myConfig.getInt("styxspace.glowstonechance", 1);
 		} else {
 			try {
 				Bukkit.getServer().getPluginManager().getPlugin("StyxSpace")
@@ -177,6 +178,7 @@ public class SpaceConfig {
 				ROOM_HEIGHT = myConfig.getInt(
 						"styxspace.breathingarea.maxroomheight", 5);
 				FLYING = myConfig.getBoolean("styxspace.enablegravity", true);
+                                GLOWSTONE_CHANCE = myConfig.getInt("styxspace.glowstonechance", 1);
 				StyxSpace.log.info(StyxSpace.prefix
 						+ " Generated configuration file for version "
 						+ StyxSpace.version);
