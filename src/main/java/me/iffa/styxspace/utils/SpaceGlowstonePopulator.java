@@ -39,7 +39,7 @@ public class SpaceGlowstonePopulator extends BlockPopulator {
             if (block.getTypeId() != 0) {
                 return;
             }
-            if (random.nextInt(100) <= SpaceConfig.GLOWSTONE_CHANCE) {
+            if (random.nextInt(150) <= SpaceConfig.GLOWSTONE_CHANCE) {
                 block.setTypeId(89);
 
                 for (int j = 0; j < 1500; j++) {
