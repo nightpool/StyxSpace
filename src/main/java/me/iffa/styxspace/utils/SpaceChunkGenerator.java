@@ -8,7 +8,6 @@ import java.util.Random;
 
 // Bukkit Imports
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -21,19 +20,18 @@ import org.bukkit.generator.BlockPopulator;
  * 
  */
 public class SpaceChunkGenerator extends ChunkGenerator {
-
     /**
-     * Generates a space world.
+     * Generates empty chunks.
+     * 
+     * @param world
+     * @param random
+     * @param cx
+     * @param cz
+     * 
+     * @return byte[]
      */
     public byte[] generate(World world, Random random, int cx, int cz) {
-        byte[] result = new byte[32768];
-        Arrays.fill(result, (byte) 0);
-
-        // If 0,0 chunk, generate spawn block here
-        if (cx == 0 && cz == 0) {
-            result[64] = (byte) Material.GLOWSTONE.getId();
-        }
-        return result;
+        return new byte[32768];
     }
 
     @Override
