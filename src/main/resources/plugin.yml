@@ -1,0 +1,52 @@
+authors: [iffa, Canis85, BR]
+main: me.iffa.styxspace.StyxSpace
+name: StyxSpace
+url: http://github.com/iffa/StyxSpace
+version: '1.1'
+softdepend: [Permissions, Spout]
+commands:
+  space:
+    description: Go to space, back to earth etc.
+    usage: |
+          /<command> <enter> [spaceworld] - Go to a space world
+          /<command> <back> - Go back where you were
+          /<command> <help>
+    permission: [styxspace.teleport.enter, styxspace.teleport.exit]
+# Permission nodes
+permissions:
+  # Permission groups
+      # All permissions group
+  styxspace.*:
+    description: Access to all StyxSpace commands.
+    children:
+      styxspace.portal: true
+      styxspace.teleport: true
+      # Portal
+  styxspace.portal.*:
+    description: Access to all portal features.
+    children:
+      styxspace.portal.destroy: true
+      styxspace.portal.use: true
+      styxspace.portal.create: true
+      # Teleport
+  styxspace.teleport.*:
+    description: Access to all teleportation commands.
+    children:
+      styxspace.teleport.enter: true
+      styxspace.teleport.exit: true
+  # Single permissions
+  styxspace.portal.use:
+    description: Allows using a sign portal.
+    default: op
+  styxspace.portal.create:
+    description: Allows creating a sign portal.
+    default: op
+  styxspace.portal.destroy:
+    description: Allows destroying a sign portal.
+    default: op
+  styxspace.teleport.enter:
+    description: Allows teleporting to space.
+    default: op
+  styxspace.teleport.exit:
+    description: Allows teleporting out of space.
+    default: op
