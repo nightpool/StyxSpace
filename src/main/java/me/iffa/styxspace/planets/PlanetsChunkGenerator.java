@@ -18,6 +18,7 @@ import java.util.Random;
 
 // StyxSpace Imports
 import me.iffa.styxspace.StyxSpace;
+import me.iffa.styxspace.utils.SpaceAsteroidPopulator;
 import me.iffa.styxspace.utils.SpaceGlowstonePopulator;
 
 // Bukkit Imports
@@ -258,7 +259,7 @@ public class PlanetsChunkGenerator extends ChunkGenerator {
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
-        return Arrays.asList((BlockPopulator) new SpaceGlowstonePopulator());
+        return Arrays.asList((BlockPopulator) new SpaceGlowstonePopulator(), new SpaceAsteroidPopulator());
     }
 
     @Override

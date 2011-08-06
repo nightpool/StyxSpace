@@ -19,8 +19,9 @@ worlds:
         # World generation options
         generation:
             generateplanets: true
-            # From 0-200, 0 means no glowstone will be generated.
+            # From 0-200, 0 means no glowstone/asteroid will be generated.
             glowstonechance: 1
+            asteroidchance: 3
         # Spacesuit options
         suit:
             required: false

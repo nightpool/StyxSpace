@@ -43,7 +43,7 @@ public class SpaceAsteroidPopulator extends BlockPopulator {
             if (block.getTypeId() != 0) {
                 return;
             }
-            if (random.nextInt(200) <= SpaceConfigHandler.getGlowstoneChance(world)) {
+            if (random.nextInt(200) <= SpaceConfigHandler.getAsteroidChance(world)) {
                 block.setTypeId(1);
                 
                 for (int j = 0; j < 1500; j++) {

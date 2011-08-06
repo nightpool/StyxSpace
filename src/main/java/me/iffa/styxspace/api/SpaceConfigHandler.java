@@ -147,4 +147,15 @@ public class SpaceConfigHandler {
     public static int getGlowstoneChance(World world) {
         return SpaceConfig.myConfig.getInt("worlds." + world.getName() + ".generation.glowstonechance", 1);
     }
+    
+    /**
+     * Gets the glowstone chance of a world.
+     * 
+     * @param world World
+     * 
+     * @return asteroid chance int
+     */
+    public static int getAsteroidChance(World world) {
+        return SpaceConfig.myConfig.getInt("worlds." + world.getName() + ".generation.asteroidchance", 1);
+    }
 }
