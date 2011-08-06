@@ -140,7 +140,6 @@ public class StyxSpace extends JavaPlugin {
         if (permissionHandler != null) {
             return;
         }
-
         Plugin permissionsPlugin = this.getServer().getPluginManager().getPlugin("Permissions");
 
         if (permissionsPlugin == null) {
@@ -148,7 +147,6 @@ public class StyxSpace extends JavaPlugin {
                     + " Permission system not detected, defaulting to OP");
             return;
         }
-
         permissionHandler = ((Permissions) permissionsPlugin).getHandler();
         log.info(prefix
                 + " Found and will use plugin "

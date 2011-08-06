@@ -37,7 +37,7 @@ public class SpaceWorldHandler {
      * Creates all space worlds from the configuration file. WARNING: Do not use this with your plugin, as it may cause explosions etc etc!
      */
     public void createSpaceWorlds() {
-        List<String> worlds = SpaceConfig.myConfig.getKeys("styxspace.worlds");
+        List<String> worlds = SpaceConfig.myConfig.getKeys("worlds");
         if (worlds == null) {
             StyxSpace.log.severe(StyxSpace.prefix + " Your configuration file has no worlds! Cancelling world generation process.");
             return;
@@ -46,7 +46,7 @@ public class SpaceWorldHandler {
             if (plugin.getServer().getWorld(world) == null) {
                 // Choosing which chunk generator to use
                 if (!SpaceConfig.myConfig.getBoolean(
-                        "styxspace.worlds." + world + ".generation.generateplanets", true)) {
+                        "worlds." + world + ".generation.generateplanets", true)) {
                     plugin.getServer().createWorld(world,
                             World.Environment.NORMAL, new SpaceChunkGenerator());
                     spaceWorlds.add(Bukkit.getServer().getWorld(world));
