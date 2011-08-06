@@ -1,4 +1,6 @@
 StyxSpace is a plugin that allows generation of worlds that are "space", empty.
 Authors: iffa, Canis85 (planets), BR (breathable areas), Nightgunner5 (some glowstone populator work)
 
+This branch aims to make StyxSpace compatible with MV2, so I am taking out all of the world management stuff and just leaving the world gen stuff.
+
 NOTE: Latest developer build can be found from target/
