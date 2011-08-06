@@ -102,10 +102,7 @@ public class SpaceWorldHandler {
      * @return true if the player is in the specified space world
      */
     public boolean isInSpace(Player player, World world) {
-        if (spaceWorlds.contains(world) && player.getWorld() == world) {
-            return true;
-        }
-        return false;
+        return (spaceWorlds.contains(world) && player.getWorld() == world);
     }
 
     /**
