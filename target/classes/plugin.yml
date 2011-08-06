@@ -1,9 +1,0 @@
-author: iffa, Canis85, BR
-main: me.iffa.styxspace.StyxSpace
-name: StyxSpace
-url: http://github.com/iffa/StyxSpace
-version: '1.0'
-commands:
-  space:
-    description: Go to space, back to earth etc
-    usage: /<command>
