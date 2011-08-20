@@ -28,7 +28,7 @@ public class SpacePlanetConfig {
      * Loads the configuration file from the .jar.
      */
     public void loadConfig() {
-        File configFile = new File(Bukkit.getServer().getPluginManager().getPlugin("StyxSpace").getDataFolder(), "planets.yml");
+        File configFile = new File(Bukkit.getServer().getPluginManager().getPlugin("StyxSpaceMV").getDataFolder(), "planets.yml");
         if (configFile.exists()) {
             myConfig = new Configuration(configFile);
             myConfig.load();
