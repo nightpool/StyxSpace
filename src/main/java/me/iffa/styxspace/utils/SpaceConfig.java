@@ -34,7 +34,7 @@ public class SpaceConfig {
             myConfig.load();
         } else {
             try {
-                Bukkit.getServer().getPluginManager().getPlugin("StyxSpace").getDataFolder().mkdir();
+                Bukkit.getServer().getPluginManager().getPlugin("StyxSpaceMV").getDataFolder().mkdir();
                 InputStream jarURL = getClass().getResourceAsStream("/config.yml");
                 this.copyFile(jarURL, configFile);
                 myConfig = new Configuration(configFile);

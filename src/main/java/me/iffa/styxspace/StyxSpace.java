@@ -21,7 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class StyxSpace extends JavaPlugin {
     // Variables
-	public static String prefix = "[StyxSpace]";
+	public static String prefix = "[StyxSpaceMV]";
 	public static String version = "1.1-MV";
 	public static final Logger log = Logger.getLogger("Minecraft");
 	
