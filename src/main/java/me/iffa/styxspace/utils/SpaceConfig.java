@@ -28,7 +28,7 @@ public class SpaceConfig {
      * Loads the configuration file from the .jar.
      */
     public void loadConfig() {
-        File configFile = new File(Bukkit.getServer().getPluginManager().getPlugin("StyxSpace").getDataFolder(), "config.yml");
+        File configFile = new File(Bukkit.getServer().getPluginManager().getPlugin("StyxSpaceMV").getDataFolder(), "config.yml");
         if (configFile.exists()) {
             myConfig = new Configuration(configFile);
             myConfig.load();
